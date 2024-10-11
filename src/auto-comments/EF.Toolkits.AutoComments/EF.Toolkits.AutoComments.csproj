@@ -1,56 +1,25 @@
 <Project Sdk="Microsoft.NET.Sdk">
+    <Import Project="..\..\..\common.props"/>
 
     <PropertyGroup>
         <TargetFrameworks>net5.0;net6.0;net7.0;net8.0</TargetFrameworks>
+        <PackageId>EF.Toolkits.AutoComments</PackageId>
+        <Title>AutoComments</Title>
+        <Version>1.0.1-alpha</Version>
+        <Authors>AndreqGav</Authors>
+        <Product>EF.Toolkits</Product>
+        <Description>Automatic addition of comments for entities based on XML documentation file.</Description>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageTags>ef; ef core; ef toolkits; ef autocomments; autocomments; auto comments</PackageTags>
+        <RepositoryUrl>https://github.com/AndreqGav/EF.Toolkits</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <Copyright>Copyright (c) Андрей Гаврилов 2024</Copyright>
+        <PackageReleaseNotes>Automatically add comments to columns and tables</PackageReleaseNotes>
     </PropertyGroup>
 
-
-    <ItemGroup Condition="'$(TargetFramework)' == 'net5.0'">
-        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.17"/>
-
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="5.0.17"/>
-
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.17">
-            <PrivateAssets>all</PrivateAssets>
-            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-        </PackageReference>
-    </ItemGroup>
-
-    <ItemGroup Condition="'$(TargetFramework)' == 'net6.0'">
-        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.35"/>
-
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="6.0.35"/>
-
-
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.35">
-            <PrivateAssets>all</PrivateAssets>
-            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-        </PackageReference>
-    </ItemGroup>
-
-    <ItemGroup Condition="'$(TargetFramework)' == 'net7.0'">
-        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.20"/>
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="7.0.20"/>
-
-
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.20">
-            <PrivateAssets>all</PrivateAssets>
-            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-        </PackageReference>
-    </ItemGroup>
-
-    <ItemGroup Condition="'$(TargetFramework)' == 'net8.0'">
-        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.10"/>
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="8.0.10"/>
-
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.10">
-            <PrivateAssets>all</PrivateAssets>
-            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-        </PackageReference>
-    </ItemGroup>
-
     <ItemGroup>
-      <ProjectReference Include="..\..\EF.Toolkits.Shared\EF.Toolkits.Shared.csproj" />
+        <ProjectReference Include="..\..\EF.Toolkits.Shared\EF.Toolkits.Shared.csproj"/>
     </ItemGroup>
 
 </Project>

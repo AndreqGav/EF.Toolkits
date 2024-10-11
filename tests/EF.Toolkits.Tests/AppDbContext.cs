@@ -20,19 +20,22 @@ namespace EF.Toolkits.Tests
         {
         }
 
+
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.AddCustomSql("Test", "Body_Up", "Body_Down");
-
-            modelBuilder.Entity<Animal>(entity =>
+            modelBuilder
+                .AddCustomSql("animals_view", "SELECT * FROM animals a WHERE a.type = 1", "DROP VIEW  IF EXISTS animals_view");
+            
+            modelBuilder.Entity<Figure>(entity =>
             {
-                entity.BeforeInsert("Test_BeforeInsert", "SELECT 1");
-                
-                entity.AfterDelete("Test_AfterDelete", "SELECT 1");
+                entity.BeforeInsert("set_square", "new.square = 0");
+
+                entity.BeforeUpdate("prevent_update_with_negative_square", "IF new.square < 0 THEN raise exception 'square negative' END IF;");
             });
         }
     }
-    
+
     public class AppDbContextFactory : IDesignTimeDbContextFactory<AppDbContext>
     {
         public AppDbContext CreateDbContext(string[] args)
