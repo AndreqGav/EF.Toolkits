@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>EF.Toolkits.Tests</name>
+    </assembly>
+    <members>
+        <member name="T:EF.Toolkits.Tests.Models.Animal">
+            <summary>
+            Сущность "Живтоное".
+            </summary>
+        </member>
+        <member name="P:EF.Toolkits.Tests.Models.Animal.Id">
+            <summary>
+            Идентификатор.
+            </summary>
+        </member>
+        <member name="P:EF.Toolkits.Tests.Models.Animal.Name">
+            <summary>
+            Кличка.
+            </summary>
+        </member>
+        <member name="P:EF.Toolkits.Tests.Models.Animal.Species">
+            <summary>
+            Порода.
+            </summary>
+        </member>
+        <member name="P:EF.Toolkits.Tests.Models.Animal.AnimalType">
+            <summary>
+            Тип.
+            </summary>
+        </member>
+        <member name="T:EF.Toolkits.Tests.Models.AnimalType">
+            <summary>
+            Тип живтоного.
+            </summary>
+        </member>
+        <member name="F:EF.Toolkits.Tests.Models.AnimalType.Dog">
+            <summary>
+            Собакен.
+            </summary>
+        </member>
+        <member name="F:EF.Toolkits.Tests.Models.AnimalType.Cat">
+            <summary>
+            Кошька.
+            </summary>
+        </member>
+        <member name="F:EF.Toolkits.Tests.Models.AnimalType.Fish">
+            <summary>
+            Рыбка.
+            </summary>
+        </member>
+        <member name="F:EF.Toolkits.Tests.Models.AnimalType.Toy">
+            <summary>
+            Игрушка?
+            </summary>
+        </member>
+    </members>
+</doc>
