@@ -6,6 +6,7 @@
 
     <ItemGroup>
         <ProjectReference Include="..\EF.Toolkits.CustomSql\EF.Toolkits.CustomSql.csproj"/>
+        <ProjectReference Include="..\..\EF.Toolkits.Shared\EF.Toolkits.Shared.csproj"/>
     </ItemGroup>
 
 </Project>
