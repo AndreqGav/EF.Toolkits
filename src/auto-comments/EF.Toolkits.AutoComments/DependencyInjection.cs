@@ -1,8 +1,10 @@
 ﻿using System.Diagnostics.CodeAnalysis;
+using EF.Toolkits.AutoComments;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 
-namespace EF.Toolkits.AutoComments
+// ReSharper disable once CheckNamespace
+namespace Toolkits.EntityFrameworkCore
 {
     public static class DependencyInjection
     {

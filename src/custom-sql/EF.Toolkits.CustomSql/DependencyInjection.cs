@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
+using EF.Toolkits.CustomSql;
 using EF.Toolkits.CustomSql.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 
-namespace EF.Toolkits.CustomSql
+// ReSharper disable once CheckNamespace
+namespace Toolkits.EntityFrameworkCore
 {
     public static class DependencyInjection
     {

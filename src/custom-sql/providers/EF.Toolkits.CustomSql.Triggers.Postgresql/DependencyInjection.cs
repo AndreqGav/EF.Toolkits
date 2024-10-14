@@ -1,8 +1,10 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using EF.Toolkits.CustomSql.Models;
+using EF.Toolkits.CustomSql.Triggers.Postgresql;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 
-namespace EF.Toolkits.CustomSql.Triggers.Postgresql
+// ReSharper disable once CheckNamespace
+namespace Toolkits.EntityFrameworkCore
 {
     public static class DependencyInjection
     {

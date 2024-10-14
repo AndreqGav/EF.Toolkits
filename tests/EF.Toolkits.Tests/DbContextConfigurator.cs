@@ -1,7 +1,5 @@
-﻿using EF.Toolkits.AutoComments;
-using EF.Toolkits.CustomSql;
-using EF.Toolkits.CustomSql.Triggers.Postgresql;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using Toolkits.EntityFrameworkCore;
 
 namespace EF.Toolkits.Tests
 {
