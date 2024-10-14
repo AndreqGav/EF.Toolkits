@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Update.Internal;
 
 #pragma warning disable EF1001
 
-namespace EF.Toolkits.Shared
+namespace Toolkits.Shared
 {
 #if NET5_0 || NET6_0
     public class CompositeMigrationsModelDiffer

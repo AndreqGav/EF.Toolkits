@@ -1,4 +1,4 @@
-﻿namespace EF.Toolkits.CustomSql.Triggers.Constants
+﻿namespace Toolkits.Triggers.Constants
 {
     public class SqlTriggerConstants
     {

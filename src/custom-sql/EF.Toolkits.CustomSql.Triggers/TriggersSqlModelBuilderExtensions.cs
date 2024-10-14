@@ -1,10 +1,10 @@
-﻿using EF.Toolkits.CustomSql.Triggers.Constants;
-using EF.Toolkits.CustomSql.Triggers.Enums;
-using EF.Toolkits.CustomSql.Triggers.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Toolkits.Triggers.Constants;
+using Toolkits.Triggers.Enums;
+using Toolkits.Triggers.Models;
 
-namespace EF.Toolkits.CustomSql.Triggers
+namespace Toolkits.Triggers
 {
     public static class TriggersExtensions
     {

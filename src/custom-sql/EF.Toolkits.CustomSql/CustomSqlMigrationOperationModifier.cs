@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using EF.Toolkits.CustomSql.Helpers;
-using EF.Toolkits.Shared;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations.Operations;
+using Toolkits.CustomSql.Helpers;
+using Toolkits.Shared;
 
-namespace EF.Toolkits.CustomSql
+namespace Toolkits.CustomSql
 {
     public class CustomSqlMigrationOperationModifier : IMigrationOperationModifier
     {

@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
-namespace EF.Toolkits.AutoComments.Helpers
+namespace Toolkits.AutoComments.Helpers
 {
     public class EntityCommentsSetter
     {

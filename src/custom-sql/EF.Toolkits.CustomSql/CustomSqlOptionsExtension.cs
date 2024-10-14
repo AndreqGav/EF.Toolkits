@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
-using EF.Toolkits.Shared;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.Extensions.DependencyInjection;
+using Toolkits.Shared;
 
-namespace EF.Toolkits.CustomSql
+namespace Toolkits.CustomSql
 {
     public class CustomSqlOptionsExtension : IDbContextOptionsExtension
     {

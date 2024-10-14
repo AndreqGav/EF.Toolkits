@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace EF.Toolkits.AutoComments.Helpers
+namespace Toolkits.AutoComments.Helpers
 {
     /// <summary>
     /// Хелпер для C# типов.

@@ -1,4 +1,4 @@
-﻿namespace EF.Toolkits.CustomSql.Triggers.Enums
+﻿namespace Toolkits.Triggers.Enums
 {
     public enum TriggerTimeEnum
     {

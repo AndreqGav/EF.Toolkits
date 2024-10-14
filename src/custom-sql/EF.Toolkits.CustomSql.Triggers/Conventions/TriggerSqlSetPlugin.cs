@@ -1,8 +1,8 @@
-﻿using EF.Toolkits.CustomSql.Triggers.Abstractions;
-using Microsoft.EntityFrameworkCore.Metadata.Conventions;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions.Infrastructure;
+using Toolkits.Triggers.Abstractions;
 
-namespace EF.Toolkits.CustomSql.Triggers.Conventions
+namespace Toolkits.Triggers.Conventions
 {
     public class TriggerSqlSetPlugin : IConventionSetPlugin
     {

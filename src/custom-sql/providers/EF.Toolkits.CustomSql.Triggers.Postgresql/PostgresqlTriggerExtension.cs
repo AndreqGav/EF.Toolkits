@@ -1,8 +1,8 @@
-﻿using EF.Toolkits.CustomSql.Triggers.Abstractions;
-using Microsoft.EntityFrameworkCore.Infrastructure;
+﻿using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.Extensions.DependencyInjection;
+using Toolkits.Triggers.Abstractions;
 
-namespace EF.Toolkits.CustomSql.Triggers.Postgresql
+namespace Toolkits.Triggers.Postgresql
 {
     public class PostgresqlTriggerExtension : TriggerSqlExtension
     {

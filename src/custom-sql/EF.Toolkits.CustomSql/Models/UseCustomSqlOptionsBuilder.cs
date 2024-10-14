@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace EF.Toolkits.CustomSql.Models
+namespace Toolkits.CustomSql.Models
 {
     public class UseCustomSqlOptions
     {

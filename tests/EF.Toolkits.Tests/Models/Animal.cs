@@ -1,4 +1,4 @@
-﻿using EF.Toolkits.AutoComments.Attributes;
+﻿using Toolkits.AutoComments.Attributes;
 
 namespace EF.Toolkits.Tests.Models
 {

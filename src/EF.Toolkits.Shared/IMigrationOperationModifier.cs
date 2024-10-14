@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations.Operations;
 
-namespace EF.Toolkits.Shared
+namespace Toolkits.Shared
 {
     public interface IMigrationOperationModifier
     {

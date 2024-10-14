@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions.Infrastructure;
 
-namespace EF.Toolkits.AutoComments.Conventions
+namespace Toolkits.AutoComments.Conventions
 {
     public class ConventionSetPlugin : IConventionSetPlugin
     {

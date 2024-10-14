@@ -1,13 +1,13 @@
 ﻿using System.Linq;
-using EF.Toolkits.CustomSql.Extensions;
-using EF.Toolkits.CustomSql.Triggers.Abstractions;
-using EF.Toolkits.CustomSql.Triggers.Models;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions.Infrastructure;
+using Toolkits.CustomSql;
+using Toolkits.Triggers.Abstractions;
+using Toolkits.Triggers.Models;
 
-namespace EF.Toolkits.CustomSql.Triggers.Conventions
+namespace Toolkits.Triggers.Conventions
 {
     public class TriggerSqlConvention : IModelFinalizingConvention
     {

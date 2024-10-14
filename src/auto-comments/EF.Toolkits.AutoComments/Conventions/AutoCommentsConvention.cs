@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
-using EF.Toolkits.AutoComments.Extensions;
-using EF.Toolkits.AutoComments.Helpers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions;
+using Toolkits.AutoComments.Extensions;
+using Toolkits.AutoComments.Helpers;
 
-namespace EF.Toolkits.AutoComments.Conventions
+namespace Toolkits.AutoComments.Conventions
 {
     internal class AutoCommentsConvention : IModelFinalizingConvention
     {

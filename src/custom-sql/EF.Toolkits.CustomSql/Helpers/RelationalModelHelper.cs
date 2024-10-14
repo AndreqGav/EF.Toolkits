@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using EF.Toolkits.CustomSql.Constants;
-using EF.Toolkits.CustomSql.Models;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Toolkits.CustomSql.Constants;
+using Toolkits.CustomSql.Models;
 
-namespace EF.Toolkits.CustomSql.Helpers
+namespace Toolkits.CustomSql.Helpers
 {
     public static class RelationalModelHelper
     {

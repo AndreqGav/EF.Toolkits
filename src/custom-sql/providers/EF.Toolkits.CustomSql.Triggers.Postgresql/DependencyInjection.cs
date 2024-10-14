@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using EF.Toolkits.CustomSql.Models;
-using EF.Toolkits.CustomSql.Triggers.Postgresql;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Toolkits.CustomSql.Models;
+using Toolkits.Triggers.Postgresql;
 
 // ReSharper disable once CheckNamespace
 namespace Toolkits.EntityFrameworkCore

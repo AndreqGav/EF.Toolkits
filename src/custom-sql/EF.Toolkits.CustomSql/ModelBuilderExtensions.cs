@@ -1,8 +1,8 @@
-﻿using EF.Toolkits.CustomSql.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Toolkits.CustomSql.Models;
 
-namespace EF.Toolkits.CustomSql.Extensions
+namespace Toolkits.CustomSql
 {
     public static class AddCustomSqlExtensions
     {

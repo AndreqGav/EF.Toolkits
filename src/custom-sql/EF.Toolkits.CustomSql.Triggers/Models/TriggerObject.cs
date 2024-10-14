@@ -1,7 +1,7 @@
 ﻿using System;
-using EF.Toolkits.CustomSql.Triggers.Enums;
+using Toolkits.Triggers.Enums;
 
-namespace EF.Toolkits.CustomSql.Triggers.Models
+namespace Toolkits.Triggers.Models
 {
     /// <summary>
     /// Объект аннотации по создании триггера.

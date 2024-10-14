@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using EF.Toolkits.AutoComments.Conventions;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions.Infrastructure;
 using Microsoft.Extensions.DependencyInjection;
+using Toolkits.AutoComments.Conventions;
 
-namespace EF.Toolkits.AutoComments
+namespace Toolkits.AutoComments
 {
     /// <summary>
     /// Расширение, которое позволяет передать и сохранить пути до XML файлов с комментариями.

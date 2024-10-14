@@ -1,6 +1,6 @@
-﻿using EF.Toolkits.CustomSql.Constants;
+﻿using Toolkits.CustomSql.Constants;
 
-namespace EF.Toolkits.CustomSql.Models
+namespace Toolkits.CustomSql.Models
 {
     public class SqlAnnotationModel
     {

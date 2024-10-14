@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
-using EF.Toolkits.CustomSql.Triggers.Conventions;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions.Infrastructure;
 using Microsoft.Extensions.DependencyInjection;
+using Toolkits.Triggers.Conventions;
 
-namespace EF.Toolkits.CustomSql.Triggers.Abstractions
+namespace Toolkits.Triggers.Abstractions
 {
     public abstract class TriggerSqlExtension : IDbContextOptionsExtension
     {

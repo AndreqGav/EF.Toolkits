@@ -1,6 +1,6 @@
-﻿using EF.Toolkits.CustomSql.Triggers.Models;
+﻿using Toolkits.Triggers.Models;
 
-namespace EF.Toolkits.CustomSql.Triggers.Abstractions
+namespace Toolkits.Triggers.Abstractions
 {
     public interface ITriggerSqlGenerator
     {

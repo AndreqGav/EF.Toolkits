@@ -5,7 +5,7 @@
         <TargetFrameworks>net5.0;net6.0;net7.0;net8.0</TargetFrameworks>
         <PackageId>EF.Toolkits.AutoComments</PackageId>
         <Title>AutoComments</Title>
-        <Version>1.0.5-alpha</Version>
+        <Version>1.0.7-alpha</Version>
         <Authors>AndreqGav</Authors>
         <Product>EF.Toolkits</Product>
         <Description>Automatic addition of comments for entities based on XML documentation file.</Description>
@@ -16,6 +16,7 @@
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <Copyright>Copyright (c) Андрей Гаврилов 2024</Copyright>
         <PackageReleaseNotes>Automatically add comments to columns and tables</PackageReleaseNotes>
+        <RootNamespace>Toolkits.AutoComments</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>

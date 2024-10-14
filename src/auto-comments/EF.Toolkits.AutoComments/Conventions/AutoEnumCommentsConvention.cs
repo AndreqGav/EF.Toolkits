@@ -1,11 +1,11 @@
 ﻿using System;
-using EF.Toolkits.AutoComments.Attributes;
-using EF.Toolkits.AutoComments.Extensions;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions;
+using Toolkits.AutoComments.Attributes;
+using Toolkits.AutoComments.Extensions;
 
-namespace EF.Toolkits.AutoComments.Conventions
+namespace Toolkits.AutoComments.Conventions
 {
     /// <summary>
     /// Добавление аннотаций о том, что требуется дополнить комментарий к Enum с перечислением его значений.

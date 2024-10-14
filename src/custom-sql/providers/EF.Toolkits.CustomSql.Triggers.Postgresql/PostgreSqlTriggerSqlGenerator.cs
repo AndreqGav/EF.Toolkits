@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Text;
-using EF.Toolkits.CustomSql.Triggers.Abstractions;
-using EF.Toolkits.CustomSql.Triggers.Enums;
-using EF.Toolkits.CustomSql.Triggers.Models;
 using Microsoft.EntityFrameworkCore.Storage;
+using Toolkits.Triggers.Abstractions;
+using Toolkits.Triggers.Enums;
+using Toolkits.Triggers.Models;
 
-namespace EF.Toolkits.CustomSql.Triggers.Postgresql
+namespace Toolkits.Triggers.Postgresql
 {
     public class PostgreSqlTriggerSqlGenerator : ITriggerSqlGenerator
     {

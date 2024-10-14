@@ -1,9 +1,8 @@
-﻿using EF.Toolkits.CustomSql.Extensions;
-using EF.Toolkits.CustomSql.Triggers;
-using EF.Toolkits.Tests.Models;
+﻿using EF.Toolkits.Tests.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
-using Microsoft.EntityFrameworkCore.Infrastructure;
+using Toolkits.CustomSql;
+using Toolkits.Triggers;
 
 namespace EF.Toolkits.Tests
 {

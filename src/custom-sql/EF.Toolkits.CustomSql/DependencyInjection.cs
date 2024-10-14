@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
-using EF.Toolkits.CustomSql;
-using EF.Toolkits.CustomSql.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Toolkits.CustomSql;
+using Toolkits.CustomSql.Models;
 
 // ReSharper disable once CheckNamespace
 namespace Toolkits.EntityFrameworkCore

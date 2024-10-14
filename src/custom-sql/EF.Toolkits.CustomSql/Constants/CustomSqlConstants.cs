@@ -1,4 +1,4 @@
-﻿namespace EF.Toolkits.CustomSql.Constants
+﻿namespace Toolkits.CustomSql.Constants
 {
     public class CustomSqlConstants
     {
