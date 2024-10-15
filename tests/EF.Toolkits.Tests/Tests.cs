@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions;
@@ -30,8 +31,41 @@ namespace EF.Toolkits.Tests
                 toMigration: null,
                 options: MigrationsSqlGenerationOptions.Default);
 
+            context.Database.EnsureCreated();
+
             // Act & Assert
+            var animals = context.Animals.ToList();
+
+            for (int i = 0; i < 100; i++)
+            {
+                using var contextTest = new AppDbContext(optionsBuilder.Options);
+                var test = contextTest.Animals.ToList();
+            }
         }
+
+        [Fact]
+        public void Multiple_Creating_DbContexts_Should_Not_Throw_ManyServiceProvidersCreatedWarning()
+        {
+            var services = new ServiceCollection();
+            services.AddDbContext<AppDbContext>(DbContextConfigurator.Configure);
+            var serviceProvider = services.BuildServiceProvider();
+
+            using var context = serviceProvider.GetRequiredService<AppDbContext>();
+
+            context.Database.EnsureCreated();
+
+            var animals = context.Animals.ToList();
+
+            // Если неправильно настроены расширения для DbContext, то при нескольких разрешений контекстов
+            // может кидать исключение из-за Microsoft.EntityFrameworkCore.Infrastructure.ManyServiceProvidersCreatedWarning
+            for (int i = 0; i < 100; i++)
+            {
+                var scope = serviceProvider.CreateScope();
+                using var contextTest = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+                var test = contextTest.Animals.ToList();
+            }
+        }
+
 
         [Fact]
         public void CustomMigrationsModelDiffer_Should_Detect_Annotation_Changes()
@@ -41,6 +75,8 @@ namespace EF.Toolkits.Tests
             DbContextConfigurator.Configure(optionsBuilder);
 
             using var context = new AppDbContext(optionsBuilder.Options);
+
+            context.Database.EnsureDeleted();
 
             var services = context.GetInfrastructure();
 
@@ -56,8 +92,10 @@ namespace EF.Toolkits.Tests
             var operations = differ.GetDifferences(sourceModel, targetModel);
 
             // Act
+            context.Database.EnsureCreated();
 
             // Assert
+            var animals = context.Animals.ToList();
         }
 
         private IRelationalModel CreateEmptyRelationalModel(AppDbContext context)

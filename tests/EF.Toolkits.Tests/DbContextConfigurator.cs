@@ -9,8 +9,10 @@ namespace EF.Toolkits.Tests
         {
             optionsBuilder
                 .UseNpgsql("Host=localhost;Port=5432;Database=EF.Toolkits.Tests;Username=postgres;Password=aSTraNTudeGI")
+                // .UseCustomSql()
                 .UseCustomSql(options => options.UseTriggers())
-                .UseAutoComments("Comments.xml");
+                .UseAutoComments("Comments.xml")
+                ;
         }
     }
 }

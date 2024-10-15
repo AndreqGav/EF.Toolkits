@@ -12,7 +12,7 @@ namespace Toolkits.Triggers.Postgresql
 
             new EntityFrameworkServicesBuilder(services)
                 .TryAddProviderSpecificServices(serviceMap =>
-                    serviceMap.TryAddTransient<ITriggerSqlGenerator, PostgreSqlTriggerSqlGenerator>());
+                    serviceMap.TryAddSingleton<ITriggerSqlGenerator, PostgreSqlTriggerSqlGenerator>());
         }
     }
 }

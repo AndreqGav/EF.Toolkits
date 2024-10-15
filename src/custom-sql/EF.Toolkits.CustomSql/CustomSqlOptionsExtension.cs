@@ -15,8 +15,11 @@ namespace Toolkits.CustomSql
 
         public void ApplyServices(IServiceCollection services)
         {
-            services.AddTransient<IMigrationOperationModifier, CustomSqlMigrationOperationModifier>();
-            services.AddTransient<IMigrationsModelDiffer, CompositeMigrationsModelDiffer>();
+            services.AddSingleton<IMigrationOperationModifier, CustomSqlMigrationOperationModifier>();
+
+            new EntityFrameworkServicesBuilder(services)
+                .TryAddProviderSpecificServices(serviceMap =>
+                    serviceMap.TryAddSingleton<IMigrationsModelDiffer, CompositeMigrationsModelDiffer>());
         }
 
         public void Validate(IDbContextOptions options)
@@ -33,7 +36,10 @@ namespace Toolkits.CustomSql
         }
 
 #if NET6_0_OR_GREATER
-        public override bool ShouldUseSameServiceProvider(DbContextOptionsExtensionInfo other) => other is CustomSqlExtensionInfo;
+        public override bool ShouldUseSameServiceProvider(DbContextOptionsExtensionInfo other)
+        {
+            return other is CustomSqlExtensionInfo;
+        }
 
         public override int GetServiceProviderHashCode() => 0;
 #else

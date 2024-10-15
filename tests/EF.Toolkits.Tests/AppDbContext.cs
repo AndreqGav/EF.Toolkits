@@ -1,4 +1,5 @@
-﻿using EF.Toolkits.Tests.Models;
+﻿using System.Collections.Generic;
+using EF.Toolkits.Tests.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Toolkits.CustomSql;
@@ -19,8 +20,6 @@ namespace EF.Toolkits.Tests
         {
         }
 
-
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder
@@ -32,6 +31,32 @@ namespace EF.Toolkits.Tests
 
                 entity.BeforeUpdate("prevent_update_with_negative_square", "IF new.square < 0 THEN raise exception 'square negative' END IF;");
             });
+
+            modelBuilder.Entity<Animal>()
+                .HasData(new List<Animal>
+                {
+                    new Animal
+                    {
+                        Id = 1,
+                        Name = "Batman",
+                        Species = "SuperCat",
+                        AnimalType = AnimalType.Cat
+                    },
+                    new Animal
+                    {
+                        Id = 2,
+                        Name = "Mammal",
+                        Species = "Doggs",
+                        AnimalType = AnimalType.Dog
+                    },
+                    new Animal
+                    {
+                        Id = 3,
+                        Name = "Freddy",
+                        Species = "MegaFish",
+                        AnimalType = AnimalType.Fish
+                    },
+                });
         }
     }
 

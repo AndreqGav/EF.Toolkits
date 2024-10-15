@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using Microsoft.EntityFrameworkCore.Infrastructure;
@@ -55,10 +56,21 @@ namespace Toolkits.AutoComments
 #if NET6_0_OR_GREATER
         public override bool ShouldUseSameServiceProvider(DbContextOptionsExtensionInfo other) => other is AutoCommentsExtensionInfo;
 
-        public override int GetServiceProviderHashCode() => Extension.XmlPaths.GetHashCode();
+        public override int GetServiceProviderHashCode() => CalculateHashCode();
 #else
-        public override long GetServiceProviderHashCode() => Extension.XmlPaths.GetHashCode();
+        public override long GetServiceProviderHashCode() => CalculateHashCode();
 #endif
+
+        private int CalculateHashCode()
+        {
+            var hash = new HashCode();
+            foreach (var item in Extension.XmlPaths)
+            {
+                hash.Add(item);
+            }
+
+            return hash.ToHashCode();
+        }
 
         private new AutoCommentsOptionsExtension Extension => (AutoCommentsOptionsExtension)base.Extension;
 
