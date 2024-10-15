@@ -1,4 +1,4 @@
-name: Nuget Packages
+name: Push Nuget Packages
 
 on:
   push:
@@ -17,9 +17,9 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build --no-restore -c Release
+      run: dotnet build -c Release
     - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet test --verbosity normal
     - name: Pack
       run: dotnet pack -c Release --output nuget-packages
     - name: Push nuget packages
