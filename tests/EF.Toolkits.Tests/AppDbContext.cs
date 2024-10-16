@@ -23,13 +23,13 @@ namespace EF.Toolkits.Tests
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder
-                .AddCustomSql("animals_view", "SELECT * FROM animals a WHERE a.type = 1", "DROP VIEW  IF EXISTS animals_view");
+                .AddCustomSql("animals_view", "SELECT * FROM \"Animals\" a WHERE a.\"AnimalType\" = 1", "DROP VIEW  IF EXISTS animals_view");
             
             modelBuilder.Entity<Figure>(entity =>
             {
-                entity.BeforeInsert("set_square", "new.square = 0");
+                entity.BeforeInsert("set_square", "new.square = 0;");
 
-                entity.BeforeUpdate("prevent_update_with_negative_square", "IF new.square < 0 THEN raise exception 'square negative' END IF;");
+                entity.BeforeUpdate("prevent_update_with_negative_square", "IF new.square < 0 THEN raise exception 'square negative'; END IF;");
             });
 
             modelBuilder.Entity<Animal>()

@@ -13,7 +13,7 @@ namespace Toolkits.EntityFrameworkCore
         public static DbContextOptionsBuilder UseCustomSql([NotNull] this DbContextOptionsBuilder optionsBuilder,
             Action<UseCustomSqlOptions> optionsAction = null)
         {
-            var extension = new CustomSqlOptionsExtension();
+            var extension = new CustomSqlOptionsExtension(optionsBuilder);
             ((IDbContextOptionsBuilderInfrastructure)optionsBuilder).AddOrUpdateExtension(extension);
 
             optionsAction?.Invoke(new UseCustomSqlOptions(optionsBuilder));

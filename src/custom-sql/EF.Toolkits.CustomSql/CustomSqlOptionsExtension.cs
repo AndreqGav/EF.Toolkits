@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.Extensions.DependencyInjection;
@@ -8,18 +9,16 @@ namespace Toolkits.CustomSql
 {
     public class CustomSqlOptionsExtension : IDbContextOptionsExtension
     {
-        public CustomSqlOptionsExtension()
+        public CustomSqlOptionsExtension(DbContextOptionsBuilder optionsBuilder)
         {
             Info = new CustomSqlExtensionInfo(this);
+
+            optionsBuilder.ReplaceService<IMigrationsModelDiffer, CompositeMigrationsModelDiffer>();
         }
 
         public void ApplyServices(IServiceCollection services)
         {
             services.AddSingleton<IMigrationOperationModifier, CustomSqlMigrationOperationModifier>();
-
-            new EntityFrameworkServicesBuilder(services)
-                .TryAddProviderSpecificServices(serviceMap =>
-                    serviceMap.TryAddSingleton<IMigrationsModelDiffer, CompositeMigrationsModelDiffer>());
         }
 
         public void Validate(IDbContextOptions options)
@@ -36,10 +35,7 @@ namespace Toolkits.CustomSql
         }
 
 #if NET6_0_OR_GREATER
-        public override bool ShouldUseSameServiceProvider(DbContextOptionsExtensionInfo other)
-        {
-            return other is CustomSqlExtensionInfo;
-        }
+        public override bool ShouldUseSameServiceProvider(DbContextOptionsExtensionInfo other) => other is CustomSqlExtensionInfo;
 
         public override int GetServiceProviderHashCode() => 0;
 #else
