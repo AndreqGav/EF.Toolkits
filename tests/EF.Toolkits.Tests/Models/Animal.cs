@@ -25,7 +25,8 @@ namespace EF.Toolkits.Tests.Models
         /// <summary>
         /// Тип.
         /// </summary>
-        [AutoCommentsEnumValues]
+        // [IgnoreAutoCommentsEnumValues]
+        // [AutoCommentsEnumValues]
         public AnimalType AnimalType { get; set; }
     }
 

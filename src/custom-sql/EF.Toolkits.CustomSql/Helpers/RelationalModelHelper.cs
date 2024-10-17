@@ -31,7 +31,7 @@ namespace Toolkits.CustomSql.Helpers
                 .Select(a => new
                 {
                     Prefix = CustomSqlConstants.SqlUp,
-                    Name = a.Name[CustomSqlConstants.SqlUp.Length..].TrimStart('_'),
+                    Name = a.Name[CustomSqlConstants.SqlUp.Length..],
                     Sql = a.Value?.ToString()
                 })
                 .ToList();
@@ -41,7 +41,7 @@ namespace Toolkits.CustomSql.Helpers
                 .Select(a => new
                 {
                     Prefix = CustomSqlConstants.SqlDown,
-                    Name = a.Name[CustomSqlConstants.SqlDown.Length..].TrimStart('_'),
+                    Name = a.Name[CustomSqlConstants.SqlDown.Length..],
                     Sql = a.Value?.ToString()
                 })
                 .ToList();

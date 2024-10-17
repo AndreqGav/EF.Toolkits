@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions.Infrastructure;
 using Microsoft.Extensions.DependencyInjection;
 using Toolkits.AutoComments.Conventions;
+using Toolkits.EntityFrameworkCore;
 
 namespace Toolkits.AutoComments
 {
@@ -15,11 +16,11 @@ namespace Toolkits.AutoComments
     /// </summary>
     internal class AutoCommentsOptionsExtension : IDbContextOptionsExtension
     {
-        public IReadOnlyList<string> XmlPaths { get; }
+        public AutoCommentOptions AutoCommentOptions { get; }
 
-        public AutoCommentsOptionsExtension(string[] xmlPaths)
+        public AutoCommentsOptionsExtension(AutoCommentOptions autoCommentOptions)
         {
-            XmlPaths = xmlPaths;
+            AutoCommentOptions = autoCommentOptions;
             Info = new AutoCommentsExtensionInfo(this);
         }
 
@@ -33,7 +34,7 @@ namespace Toolkits.AutoComments
 
         public void Validate(IDbContextOptions options)
         {
-            foreach (var xmlPath in XmlPaths)
+            foreach (var xmlPath in AutoCommentOptions.XmlPaths)
             {
                 if (!File.Exists(xmlPath))
                 {
@@ -64,10 +65,12 @@ namespace Toolkits.AutoComments
         private int CalculateHashCode()
         {
             var hash = new HashCode();
-            foreach (var item in Extension.XmlPaths)
+            foreach (var item in Extension.AutoCommentOptions.XmlPaths)
             {
                 hash.Add(item);
             }
+
+            hash.Add(Extension.AutoCommentOptions.AutoEnumValuesComment);
 
             return hash.ToHashCode();
         }
@@ -82,7 +85,7 @@ namespace Toolkits.AutoComments
                 {
                     var builder = new StringBuilder();
 
-                    foreach (var xmlPath in Extension.XmlPaths)
+                    foreach (var xmlPath in Extension.AutoCommentOptions.XmlPaths)
                     {
                         builder.AppendJoin(' ', $"XML comments file: {xmlPath}");
                     }

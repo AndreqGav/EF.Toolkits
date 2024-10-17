@@ -12,7 +12,14 @@ namespace Toolkits.AutoComments.Conventions
     /// </summary>
     internal class AutoEnumCommentsConvention : IModelFinalizingConvention
     {
+        private readonly bool _allEnumsAutoCommentValues;
+
         public const string Name = "AutoEnumValuesComment";
+
+        public AutoEnumCommentsConvention(bool allEnumsAutoCommentValues)
+        {
+            _allEnumsAutoCommentValues = allEnumsAutoCommentValues;
+        }
 
         public void ProcessModelFinalizing(IConventionModelBuilder modelBuilder,
             IConventionContext<IConventionModelBuilder> context)
@@ -26,7 +33,7 @@ namespace Toolkits.AutoComments.Conventions
             }
         }
 
-        private static void TrySetAutoEnumValuesAnnotation(IConventionProperty property)
+        private void TrySetAutoEnumValuesAnnotation(IConventionProperty property)
         {
             var memberInfo = property.PropertyInfo;
             if (memberInfo == null)
@@ -34,11 +41,28 @@ namespace Toolkits.AutoComments.Conventions
                 return;
             }
 
-            var autoEnumComment = Attribute.GetCustomAttribute(memberInfo, typeof(AutoCommentsEnumValuesAttribute));
-
-            if (autoEnumComment is not null)
+            if (_allEnumsAutoCommentValues)
             {
-                property.Builder.AddEnumValueComment();
+                var propType = property.PropertyInfo?.PropertyType;
+
+                if (propType?.IsEnum == true)
+                {
+                    var ignoreAutoEnumComment = Attribute.GetCustomAttribute(memberInfo, typeof(IgnoreAutoCommentsEnumValuesAttribute));
+
+                    if (ignoreAutoEnumComment is null)
+                    {
+                        property.Builder.AddEnumValueComment();
+                    }
+                }
+            }
+            else
+            {
+                var autoEnumComment = Attribute.GetCustomAttribute(memberInfo, typeof(AutoCommentsEnumValuesAttribute));
+
+                if (autoEnumComment is not null)
+                {
+                    property.Builder.AddEnumValueComment();
+                }
             }
         }
     }

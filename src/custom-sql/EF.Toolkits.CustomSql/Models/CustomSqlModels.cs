@@ -17,14 +17,14 @@ namespace Toolkits.CustomSql.Models
 
     public class SqlUpModel : SqlAnnotationModel
     {
-        public SqlUpModel(string name, string sql) : base($"{CustomSqlConstants.SqlUp}_{name}", sql)
+        public SqlUpModel(string name, string sql) : base($"{CustomSqlConstants.SqlUp}{name}", sql)
         {
         }
     }
 
     public class SqlDownModel : SqlAnnotationModel
     {
-        public SqlDownModel(string name, string sql) : base($"{CustomSqlConstants.SqlDown}_{name}", sql)
+        public SqlDownModel(string name, string sql) : base($"{CustomSqlConstants.SqlDown}{name}", sql)
         {
         }
     }

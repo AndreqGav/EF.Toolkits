@@ -6,4 +6,9 @@ namespace Toolkits.AutoComments.Attributes
     public class AutoCommentsEnumValuesAttribute : Attribute
     {
     }
+    
+    [AttributeUsage(AttributeTargets.Property)]
+    public class IgnoreAutoCommentsEnumValuesAttribute : Attribute
+    {
+    }
 }

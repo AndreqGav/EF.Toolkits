@@ -1,11 +1,11 @@
 ﻿namespace Toolkits.CustomSql.Constants
 {
-    public class CustomSqlConstants
+    public static class CustomSqlConstants
     {
-        public static readonly string Sql = "SQL";
+        public const string Sql = "Sql";
 
-        public static readonly string SqlUp = $"{Sql}_UP";
+        public static readonly string SqlUp = $"{Sql}Up:";
 
-        public static readonly string SqlDown = $"{Sql}_DOWN";
+        public static readonly string SqlDown = $"{Sql}Down:";
     }
 }
