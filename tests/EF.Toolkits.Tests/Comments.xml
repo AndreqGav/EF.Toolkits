@@ -49,9 +49,9 @@
             Рыбка.
             </summary>
         </member>
-        <member name="F:EF.Toolkits.Tests.Models.AnimalType.Toy">
+        <member name="F:EF.Toolkits.Tests.Models.AnimalType.Other">
             <summary>
-            Игрушка?
+            Другое.
             </summary>
         </member>
     </members>

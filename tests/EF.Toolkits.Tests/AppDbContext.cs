@@ -25,7 +25,7 @@ namespace EF.Toolkits.Tests
         {
             modelBuilder
                 .AddCustomSql("animals_view", "SELECT * FROM \"Animals\" a WHERE a.\"AnimalType\" = 1",
-                    "DROP VIEW  IF EXISTS animals_view");
+                    "DROP VIEW IF EXISTS animals_view");
 
             modelBuilder.Entity<Figure>(entity =>
             {
@@ -41,6 +41,15 @@ namespace EF.Toolkits.Tests
 
                 entity.BeforeInsertOrUpdate("before_insert_or_update", triggersGenerator.GenerateTriggersScript());
             });
+
+            modelBuilder.HasDbFunction(typeof(AppDbFunctions).GetMethod(nameof(AppDbFunctions.GetName))!)
+                .HasName("get_name")
+                .AddCustomSql(AppDbFunctions.GetNameSqlUp(), AppDbFunctions.GetNameSqlDown());
+            
+            modelBuilder
+                .AddCustomSql("get_name", AppDbFunctions.GetNameSqlUp(), AppDbFunctions.GetNameSqlDown())
+                .HasDbFunction(typeof(AppDbFunctions).GetMethod(nameof(AppDbFunctions.GetName))!)
+                .HasName("get_name");
 
             modelBuilder.Entity<Animal>()
                 .HasData(new List<Animal>

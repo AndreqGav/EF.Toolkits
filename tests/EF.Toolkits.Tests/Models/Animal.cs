@@ -51,8 +51,8 @@ namespace EF.Toolkits.Tests.Models
         Fish,
 
         /// <summary>
-        /// Игрушка?
+        /// Другое.
         /// </summary>
-        Toy
+        Other
     }
 }
