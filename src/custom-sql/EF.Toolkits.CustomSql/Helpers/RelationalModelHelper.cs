@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Toolkits.CustomSql.Constants;
@@ -24,11 +23,11 @@ namespace Toolkits.CustomSql.Helpers
             }
 
             var annotations = GetAllAnnotations(model)
-                .Where(IsCustomSqlAnnotation)
+                .Where(a => a.Name.StartsWith(CustomSqlConstants.Sql))
                 .ToList();
 
             var sqlUpAnnotation = annotations
-                .Where(IsCustomSqlUpAnnotation)
+                .Where(a => a.Name.StartsWith(CustomSqlConstants.SqlUp))
                 .Select(a => new
                 {
                     Prefix = CustomSqlConstants.SqlUp,
@@ -38,7 +37,7 @@ namespace Toolkits.CustomSql.Helpers
                 .ToList();
 
             var sqlDownAnnotation = annotations
-                .Where(IsCustomSqlDownAnnotation)
+                .Where(a => a.Name.StartsWith(CustomSqlConstants.SqlDown))
                 .Select(a => new
                 {
                     Prefix = CustomSqlConstants.SqlDown,
@@ -76,30 +75,7 @@ namespace Toolkits.CustomSql.Helpers
                 annotations = annotations.Concat(entityAnnotations);
             }
 
-            // Аннотации из функций перенесены в глобальные.
-            // foreach (var dbFunction in model.GetDbFunctions())
-            // {
-            //     var entityAnnotations = dbFunction.GetAnnotations();
-            //
-            //     annotations = annotations.Concat(entityAnnotations);
-            // }
-
             return annotations;
-        }
-
-        public static bool IsCustomSqlAnnotation(this IAnnotation annotation)
-        {
-            return annotation.Name.StartsWith(CustomSqlConstants.Sql);
-        }
-
-        public static bool IsCustomSqlUpAnnotation(this IAnnotation annotation)
-        {
-            return annotation.Name.StartsWith(CustomSqlConstants.SqlUp);
-        }
-
-        public static bool IsCustomSqlDownAnnotation(this IAnnotation annotation)
-        {
-            return annotation.Name.StartsWith(CustomSqlConstants.SqlDown);
         }
     }
 }

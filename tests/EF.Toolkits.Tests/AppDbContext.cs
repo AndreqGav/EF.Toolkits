@@ -41,10 +41,6 @@ namespace EF.Toolkits.Tests
 
                 entity.BeforeInsertOrUpdate("before_insert_or_update", triggersGenerator.GenerateTriggersScript());
             });
-
-            modelBuilder.HasDbFunction(typeof(AppDbFunctions).GetMethod(nameof(AppDbFunctions.GetName))!)
-                .HasName("get_name")
-                .AddCustomSql(AppDbFunctions.GetNameSqlUp(), AppDbFunctions.GetNameSqlDown());
             
             modelBuilder
                 .AddCustomSql("get_name", AppDbFunctions.GetNameSqlUp(), AppDbFunctions.GetNameSqlDown())

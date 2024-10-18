@@ -41,20 +41,5 @@ namespace Toolkits.CustomSql
 
             return entityTypeBuilder;
         }
-
-        public static DbFunctionBuilder AddCustomSql(this DbFunctionBuilder functionBuilder, string sqlUp, string sqlDown)
-        {
-            var metadata = functionBuilder.Metadata;
-            
-            var name = metadata.Name;
-
-            var sqlUpModel = new SqlUpModel(name, sqlUp);
-            var sqlDownModel = new SqlDownModel(name, sqlDown);
-            
-            metadata.SetAnnotation(sqlUpModel.Name, sqlUpModel.Sql);
-            metadata.SetAnnotation(sqlDownModel.Name, sqlDownModel.Sql);
-
-            return functionBuilder;
-        }
     }
 }

@@ -1,10 +1,8 @@
 ﻿using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata.Conventions.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.Extensions.DependencyInjection;
-using Toolkits.CustomSql.Conventions;
 using Toolkits.Shared;
 
 namespace Toolkits.CustomSql
@@ -21,9 +19,6 @@ namespace Toolkits.CustomSql
         public void ApplyServices(IServiceCollection services)
         {
             services.AddSingleton<IMigrationOperationModifier, CustomSqlMigrationOperationModifier>();
-
-            new EntityFrameworkServicesBuilder(services)
-                .TryAdd<IConventionSetPlugin, CustomSqlSetPlugin>();
         }
 
         public void Validate(IDbContextOptions options)
