@@ -80,6 +80,7 @@ namespace Toolkits.AutoComments
                         NotFinedXmlPaths.Remove(path);
 
                         yield return path;
+                        break;
                     }
                 }
             }
