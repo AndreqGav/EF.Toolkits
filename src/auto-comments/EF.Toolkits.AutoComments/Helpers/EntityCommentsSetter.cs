@@ -16,14 +16,14 @@ namespace Toolkits.AutoComments.Helpers
 
         private readonly XmlDocument _xmlDocument;
 
-        public EntityCommentsSetter(IEnumerable<string> xmlPaths)
+        public EntityCommentsSetter(IEnumerable<string> xmlFiles)
         {
             _xmlDocument = null;
 
-            foreach (var xmlPath in xmlPaths)
+            foreach (var xmlFile in xmlFiles)
             {
                 var xmlDocumentPart = new XmlDocument();
-                using var commentStream = File.Open(xmlPath, FileMode.Open, FileAccess.Read, FileShare.Read);
+                using var commentStream = File.Open(xmlFile, FileMode.Open, FileAccess.Read, FileShare.Read);
                 xmlDocumentPart.Load(commentStream);
 
                 if (_xmlDocument == null)
@@ -75,7 +75,7 @@ namespace Toolkits.AutoComments.Helpers
             }
         }
 
-        public void AddEnumValuesComment(IConventionProperty property)
+        public void AddEnumDescriptionComment(IConventionProperty property)
         {
             var propType = property.PropertyInfo?.PropertyType;
             var enumType = propType is not null ? Nullable.GetUnderlyingType(propType) ?? propType : null;

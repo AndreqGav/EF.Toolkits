@@ -18,16 +18,16 @@ namespace Toolkits.AutoComments
     /// </summary>
     internal class AutoCommentsOptionsExtension : IDbContextOptionsExtension
     {
-        public string[] XmlPaths { get; }
+        public string[] XmlFiles { get; }
 
-        public bool AutoEnumValuesComment { get; set; }
+        public bool AutoCommentEnumDescriptions { get; set; }
 
         private Dictionary<string, List<string>> NotFinedXmlPaths { get; } = new();
 
         public AutoCommentsOptionsExtension(AutoCommentOptions autoCommentOptions)
         {
-            XmlPaths = GetXmlPaths(autoCommentOptions).ToArray();
-            AutoEnumValuesComment = autoCommentOptions.AutoEnumValuesComment;
+            XmlFiles = GetXmlFiles(autoCommentOptions).ToArray();
+            AutoCommentEnumDescriptions = autoCommentOptions.AutoCommentEnumDescriptions;
 
             Info = new AutoCommentsExtensionInfo(this);
         }
@@ -42,7 +42,7 @@ namespace Toolkits.AutoComments
 
         public void Validate(IDbContextOptions options)
         {
-            foreach (var xmlPath in XmlPaths)
+            foreach (var xmlPath in XmlFiles)
             {
                 if (!File.Exists(xmlPath))
                 {
@@ -60,24 +60,24 @@ namespace Toolkits.AutoComments
             }
         }
 
-        private IEnumerable<string> GetXmlPaths(AutoCommentOptions options)
+        private IEnumerable<string> GetXmlFiles(AutoCommentOptions options)
         {
             var assemblyLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) ?? string.Empty;
 
-            foreach (var xmlPath in options.XmlPaths)
+            foreach (var xmlFile in options.XmlFiles)
             {
-                var pathCandidates = new List<string> {xmlPath, Path.Combine(assemblyLocation, xmlPath)};
+                var paths = new List<string> {xmlFile, Path.Combine(assemblyLocation, xmlFile)};
 
-                foreach (var path in pathCandidates)
+                foreach (var path in paths)
                 {
                     if (!File.Exists(path))
                     {
-                        NotFinedXmlPaths.TryAdd(xmlPath, new List<string>());
-                        NotFinedXmlPaths[xmlPath].Add(path);
+                        NotFinedXmlPaths.TryAdd(xmlFile, new List<string>());
+                        NotFinedXmlPaths[xmlFile].Add(path);
                     }
                     else
                     {
-                        NotFinedXmlPaths.Remove(path);
+                        NotFinedXmlPaths.Remove(xmlFile);
 
                         yield return path;
                         break;
@@ -108,12 +108,12 @@ namespace Toolkits.AutoComments
         private int CalculateHashCode()
         {
             var hash = new HashCode();
-            foreach (var item in Extension.XmlPaths)
+            foreach (var item in Extension.XmlFiles)
             {
                 hash.Add(item);
             }
 
-            hash.Add(Extension.AutoEnumValuesComment);
+            hash.Add(Extension.AutoCommentEnumDescriptions);
 
             return hash.ToHashCode();
         }
@@ -128,7 +128,7 @@ namespace Toolkits.AutoComments
                 {
                     var builder = new StringBuilder();
 
-                    foreach (var xmlPath in Extension.XmlPaths)
+                    foreach (var xmlPath in Extension.XmlFiles)
                     {
                         builder.AppendJoin(' ', $"Used XML comments file: {xmlPath}");
                     }

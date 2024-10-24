@@ -3,12 +3,12 @@
 namespace Toolkits.AutoComments.Attributes
 {
     [AttributeUsage(AttributeTargets.Property)]
-    public class AutoCommentsEnumValuesAttribute : Attribute
+    public class AutoCommentEnumDescriptionAttribute : Attribute
     {
     }
     
     [AttributeUsage(AttributeTargets.Property)]
-    public class IgnoreAutoCommentsEnumValuesAttribute : Attribute
+    public class IgnoreAutoCommentEnumDescriptionAttribute : Attribute
     {
     }
 }

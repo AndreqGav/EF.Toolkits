@@ -11,9 +11,9 @@ namespace Toolkits.AutoComments.Conventions
     {
         private readonly EntityCommentsSetter _commentsSetter;
 
-        public AutoCommentsConvention(IEnumerable<string> xmlPaths)
+        public AutoCommentsConvention(IEnumerable<string> xmlFiles)
         {
-            _commentsSetter = new EntityCommentsSetter(xmlPaths);
+            _commentsSetter = new EntityCommentsSetter(xmlFiles);
         }
         
         public void ProcessModelFinalizing(IConventionModelBuilder modelBuilder,
@@ -30,9 +30,9 @@ namespace Toolkits.AutoComments.Conventions
                 {
                     _commentsSetter.SetColumnComment(property);
 
-                    if (property.HasEnumValueComments())
+                    if (property.HasEnumDescriptionComment())
                     {
-                        _commentsSetter.AddEnumValuesComment(property);
+                        _commentsSetter.AddEnumDescriptionComment(property);
                     }
                 }
             }

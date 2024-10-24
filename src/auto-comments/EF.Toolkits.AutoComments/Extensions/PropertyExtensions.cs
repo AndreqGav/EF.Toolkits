@@ -7,15 +7,15 @@ namespace Toolkits.AutoComments.Extensions
 {
     public static class PropertyExtensions
     {
-        public static void AddEnumValueComment([NotNull] this IConventionPropertyBuilder propertyBuilder)
+        public static void AddEnumDescriptionComment([NotNull] this IConventionPropertyBuilder propertyBuilder)
         {
             var property = propertyBuilder.Metadata;
-            property.Builder.HasAnnotation(AutoEnumCommentsConvention.Name, string.Empty);
+            property.Builder.HasAnnotation(AutoCommentEnumDescriptionConvention.Name, string.Empty);
         }
 
-        public static bool HasEnumValueComments([NotNull] this IConventionProperty property)
+        public static bool HasEnumDescriptionComment([NotNull] this IConventionProperty property)
         {
-            return property.FindAnnotation(AutoEnumCommentsConvention.Name) is not null;
+            return property.FindAnnotation(AutoCommentEnumDescriptionConvention.Name) is not null;
         }
     }
 }

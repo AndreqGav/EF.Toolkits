@@ -10,11 +10,11 @@ namespace Toolkits.EntityFrameworkCore
     public static class DependencyInjection
     {
         public static DbContextOptionsBuilder UseAutoComments([NotNull] this DbContextOptionsBuilder optionsBuilder,
-            params string[] xmlPaths)
+            params string[] xmlFiles)
         {
             var options = new AutoCommentOptions
             {
-                XmlPaths = xmlPaths
+                XmlFiles = xmlFiles
             };
 
             var extension = new AutoCommentsOptionsExtension(options);
@@ -40,23 +40,23 @@ namespace Toolkits.EntityFrameworkCore
 
     public class AutoCommentOptions
     {
-        internal string[] XmlPaths { get; set; }
+        internal string[] XmlFiles { get; set; }
 
-        internal bool AutoEnumValuesComment { get; set; }
+        internal bool AutoCommentEnumDescriptions { get; set; }
     }
 
     public static class AutoCommentOptionsExtensions
     {
-        public static AutoCommentOptions WithXmlPaths(this AutoCommentOptions options, params string[] xmlPaths)
+        public static AutoCommentOptions FromXmlFiles(this AutoCommentOptions options, params string[] xmlFiles)
         {
-            options.XmlPaths = xmlPaths;
+            options.XmlFiles = xmlFiles;
 
             return options;
         }
 
-        public static AutoCommentOptions AddEnumValuesComments(this AutoCommentOptions options)
+        public static AutoCommentOptions AddEnumDescriptions(this AutoCommentOptions options)
         {
-            options.AutoEnumValuesComment = true;
+            options.AutoCommentEnumDescriptions = true;
 
             return options;
         }

@@ -10,7 +10,7 @@ namespace EF.Toolkits.Tests
             optionsBuilder
                 .UseNpgsql("Host=localhost;Port=5432;Database=EF.Toolkits.Tests;Username=postgres;Password=aSTraNTudeGI")
                 .UseCustomSql(options => options.UseTriggers())
-                .UseAutoComments(options => options.WithXmlPaths("Comments.xml").AddEnumValuesComments())
+                .UseAutoComments(options => options.FromXmlFiles("Comments.xml").AddEnumDescriptions())
                 ;
         }
     }

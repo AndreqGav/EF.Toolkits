@@ -10,15 +10,15 @@ namespace Toolkits.AutoComments.Conventions
     /// <summary>
     /// Добавление аннотаций о том, что требуется дополнить комментарий к Enum с перечислением его значений.
     /// </summary>
-    internal class AutoEnumCommentsConvention : IModelFinalizingConvention
+    internal class AutoCommentEnumDescriptionConvention : IModelFinalizingConvention
     {
-        private readonly bool _allEnumsAutoCommentValues;
+        private readonly bool _allEnumsHasAutoCommentDescription;
 
-        public const string Name = "AutoEnumValuesComment";
+        public const string Name = "AutoCommentEnumDescription";
 
-        public AutoEnumCommentsConvention(bool allEnumsAutoCommentValues)
+        public AutoCommentEnumDescriptionConvention(bool allEnumsHasAutoCommentDescription)
         {
-            _allEnumsAutoCommentValues = allEnumsAutoCommentValues;
+            _allEnumsHasAutoCommentDescription = allEnumsHasAutoCommentDescription;
         }
 
         public void ProcessModelFinalizing(IConventionModelBuilder modelBuilder,
@@ -28,12 +28,12 @@ namespace Toolkits.AutoComments.Conventions
             {
                 foreach (var property in entityType.GetProperties())
                 {
-                    TrySetAutoEnumValuesAnnotation(property);
+                    TrySetAutoCommentEnumDescriptionAnnotation(property);
                 }
             }
         }
 
-        private void TrySetAutoEnumValuesAnnotation(IConventionProperty property)
+        private void TrySetAutoCommentEnumDescriptionAnnotation(IConventionProperty property)
         {
             var memberInfo = property.PropertyInfo;
             if (memberInfo == null)
@@ -41,27 +41,27 @@ namespace Toolkits.AutoComments.Conventions
                 return;
             }
 
-            if (_allEnumsAutoCommentValues)
+            if (_allEnumsHasAutoCommentDescription)
             {
                 var propType = property.PropertyInfo?.PropertyType;
 
                 if (propType?.IsEnum == true)
                 {
-                    var ignoreAutoEnumComment = Attribute.GetCustomAttribute(memberInfo, typeof(IgnoreAutoCommentsEnumValuesAttribute));
+                    var ignoreAutoEnumComment = Attribute.GetCustomAttribute(memberInfo, typeof(IgnoreAutoCommentEnumDescriptionAttribute));
 
                     if (ignoreAutoEnumComment is null)
                     {
-                        property.Builder.AddEnumValueComment();
+                        property.Builder.AddEnumDescriptionComment();
                     }
                 }
             }
             else
             {
-                var autoEnumComment = Attribute.GetCustomAttribute(memberInfo, typeof(AutoCommentsEnumValuesAttribute));
+                var autoEnumComment = Attribute.GetCustomAttribute(memberInfo, typeof(AutoCommentEnumDescriptionAttribute));
 
                 if (autoEnumComment is not null)
                 {
-                    property.Builder.AddEnumValueComment();
+                    property.Builder.AddEnumDescriptionComment();
                 }
             }
         }

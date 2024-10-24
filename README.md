@@ -18,12 +18,12 @@ optionsBuilder
         <DocumentationFile>Comments.xml</DocumentationFile>
     </PropertyGroup>
 ```
-Также поддерживается описание значений ```Enum``` через атрибут ```AutoCommentsEnumValues``` или с использованием настройки ```AddEnumValuesComments```
+Также поддерживается описание значений ```Enum``` через атрибут ```AutoCommentEnumDescription``` или с использованием настройки ```AddEnumDescriptions```
 ```
             optionsBuilder
-                .UseAutoComments(options => options.WithXmlPaths("Comments.xml").AddEnumValuesComments());
+                .UseAutoComments(options => options.FromXmlFiles("Comments.xml").AddEnumDescriptions());
 ```
-Для того, чтобы исключить описание значений ```Enum``` можно использовать атрибут ```IgnoreAutoCommentsEnumValues```
+Для того, чтобы исключить описание значений ```Enum``` можно использовать атрибут ```IgnoreAutoCommentEnumDescription```
 Пример:
 Для перечисления ```AnimalType``` будет создан такой комментарий: ```Тип.\n\n0 - Собакен.\n1 - Кошька.\n2 - Рыбка.\n3 - Другое.```
 ```
