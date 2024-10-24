@@ -16,12 +16,10 @@ namespace Toolkits.AutoComments.Conventions
 
         public ConventionSet ModifyConventions(ConventionSet conventionSet)
         {
-            var options = _extension.AutoCommentOptions;
-
-            var enumAnnotationConvention = new AutoEnumCommentsConvention(options.AutoEnumValuesComment);
+            var enumAnnotationConvention = new AutoEnumCommentsConvention(_extension.AutoEnumValuesComment);
             conventionSet.ModelFinalizingConventions.Add(enumAnnotationConvention);
 
-            var autoCommentsConvention = new AutoCommentsConvention(options.XmlPaths);
+            var autoCommentsConvention = new AutoCommentsConvention(_extension.XmlPaths);
             conventionSet.ModelFinalizingConventions.Add(autoCommentsConvention);
 
             return conventionSet;

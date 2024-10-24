@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Reflection;
 using System.Text;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions.Infrastructure;
@@ -16,11 +18,17 @@ namespace Toolkits.AutoComments
     /// </summary>
     internal class AutoCommentsOptionsExtension : IDbContextOptionsExtension
     {
-        public AutoCommentOptions AutoCommentOptions { get; }
+        public string[] XmlPaths { get; }
+
+        public bool AutoEnumValuesComment { get; set; }
+
+        private Dictionary<string, List<string>> NotFinedXmlPaths { get; } = new();
 
         public AutoCommentsOptionsExtension(AutoCommentOptions autoCommentOptions)
         {
-            AutoCommentOptions = autoCommentOptions;
+            XmlPaths = GetXmlPaths(autoCommentOptions).ToArray();
+            AutoEnumValuesComment = autoCommentOptions.AutoEnumValuesComment;
+
             Info = new AutoCommentsExtensionInfo(this);
         }
 
@@ -34,11 +42,45 @@ namespace Toolkits.AutoComments
 
         public void Validate(IDbContextOptions options)
         {
-            foreach (var xmlPath in AutoCommentOptions.XmlPaths)
+            foreach (var xmlPath in XmlPaths)
             {
                 if (!File.Exists(xmlPath))
                 {
                     throw new FileNotFoundException($"XML file {xmlPath} not exists", xmlPath);
+                }
+            }
+
+            foreach (var (key, value) in NotFinedXmlPaths)
+            {
+                var paths = string.Join(", ", value);
+                        
+                Console.ForegroundColor = ConsoleColor.Yellow; 
+                Console.WriteLine($"XML comments file {key} not found. The following locations were searched: {paths}");
+                Console.ResetColor();
+            }
+        }
+
+        private IEnumerable<string> GetXmlPaths(AutoCommentOptions options)
+        {
+            var assemblyLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) ?? string.Empty;
+
+            foreach (var xmlPath in options.XmlPaths)
+            {
+                var pathCandidates = new List<string> {xmlPath, Path.Combine(assemblyLocation, xmlPath)};
+
+                foreach (var path in pathCandidates)
+                {
+                    if (!File.Exists(path))
+                    {
+                        NotFinedXmlPaths.TryAdd(xmlPath, new List<string>());
+                        NotFinedXmlPaths[xmlPath].Add(path);
+                    }
+                    else
+                    {
+                        NotFinedXmlPaths.Remove(path);
+
+                        yield return path;
+                    }
                 }
             }
         }
@@ -65,12 +107,12 @@ namespace Toolkits.AutoComments
         private int CalculateHashCode()
         {
             var hash = new HashCode();
-            foreach (var item in Extension.AutoCommentOptions.XmlPaths)
+            foreach (var item in Extension.XmlPaths)
             {
                 hash.Add(item);
             }
 
-            hash.Add(Extension.AutoCommentOptions.AutoEnumValuesComment);
+            hash.Add(Extension.AutoEnumValuesComment);
 
             return hash.ToHashCode();
         }
@@ -85,9 +127,9 @@ namespace Toolkits.AutoComments
                 {
                     var builder = new StringBuilder();
 
-                    foreach (var xmlPath in Extension.AutoCommentOptions.XmlPaths)
+                    foreach (var xmlPath in Extension.XmlPaths)
                     {
-                        builder.AppendJoin(' ', $"XML comments file: {xmlPath}");
+                        builder.AppendJoin(' ', $"Used XML comments file: {xmlPath}");
                     }
 
                     _logFragment = builder.ToString();

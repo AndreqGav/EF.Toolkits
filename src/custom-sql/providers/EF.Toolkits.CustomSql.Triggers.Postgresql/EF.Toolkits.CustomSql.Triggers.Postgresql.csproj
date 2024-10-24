@@ -5,7 +5,7 @@
         <TargetFrameworks>net5.0;net6.0;net7.0;net8.0</TargetFrameworks>
         <PackageId>EF.Toolkits.CustomSql.Triggers.Postgresql</PackageId>
         <Title>CustomSql.Triggers.Postgresql</Title>
-        <Version>1.0.12-alpha</Version>
+        <Version>1.0.13-alpha</Version>
         <Authors>AndreqGav</Authors>
         <Product>EF.Toolkits</Product>
         <Description>Managing the creation of triggers in the database postgresql through the EF migration mechanism.</Description>
