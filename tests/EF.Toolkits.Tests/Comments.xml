@@ -54,5 +54,10 @@
             Другое.
             </summary>
         </member>
+        <member name="T:EF.Toolkits.Tests.Models.EmployeeView">
+            <summary>
+            Тестовый комментарий для View.
+            </summary>
+        </member>
     </members>
 </doc>

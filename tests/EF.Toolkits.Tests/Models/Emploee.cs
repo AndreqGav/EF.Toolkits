@@ -1,6 +1,6 @@
 ﻿namespace EF.Toolkits.Tests.Models
 {
-    public class Emploee
+    public class Employee
     {
         public int Id { get; set; }
 

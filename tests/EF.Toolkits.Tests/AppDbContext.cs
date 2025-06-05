@@ -14,7 +14,9 @@ namespace EF.Toolkits.Tests
 
         public DbSet<Figure> Figures { get; set; }
 
-        public DbSet<Emploee> Emploees { get; set; }
+        public DbSet<Employee> Employees { get; set; }
+
+        public DbSet<EmployeeView> EmployeesView { get; set; }
 
         public AppDbContext(DbContextOptions<AppDbContext> options)
             : base(options)
@@ -42,6 +44,13 @@ namespace EF.Toolkits.Tests
                 entity.BeforeInsertOrUpdate("before_insert_or_update", triggersGenerator.GenerateTriggersScript());
             });
             
+            modelBuilder.Entity<EmployeeView>(entity =>
+            {
+                entity.HasNoKey();
+                
+                entity.ToView("EmployeeView");
+            });
+
             modelBuilder
                 .AddCustomSql("get_name", AppDbFunctions.GetNameSqlUp(), AppDbFunctions.GetNameSqlDown())
                 .HasDbFunction(typeof(AppDbFunctions).GetMethod(nameof(AppDbFunctions.GetName))!)
