@@ -82,6 +82,30 @@ namespace EF.Toolkits.Tests
                     },
                 });
 
+            modelBuilder.Entity<Employee>(builder =>
+            {
+#if NET7_0_OR_GREATER
+                
+                builder.ToTable("Employees", t => t.HasComment("Рабочий"));
+#else
+                builder.HasComment("Рабочий");
+                builder.ToTable("Employees");
+#endif
+
+                builder.OwnsOne(e => e.Company);
+
+                builder.Navigation(e => e.Company).IsRequired();
+
+                builder.Property(e => e.FirstName).HasComment("Имечко");
+            });
+
+            Tpc(modelBuilder);
+
+            Tph(modelBuilder);
+        }
+
+        private void Tpc(ModelBuilder modelBuilder)
+        {
 #if NET8_0_OR_GREATER
 
             modelBuilder.Entity<BlogBase>(builder =>
@@ -91,8 +115,25 @@ namespace EF.Toolkits.Tests
             });
 
             modelBuilder.Entity<BlogA>();
+            modelBuilder.Entity<BlogB>();
 
 #endif
+        }
+
+        private void Tph(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Post>(builder =>
+            {
+                builder.HasKey(entity => entity.Id);
+
+#if NET7_0_OR_GREATER
+                builder.UseTphMappingStrategy();
+#endif
+            });
+
+            modelBuilder.Entity<PostA>(builder => { builder.HasBaseType<Post>(); });
+
+            modelBuilder.Entity<PostB>(builder => { builder.HasBaseType<Post>(); });
         }
     }
 

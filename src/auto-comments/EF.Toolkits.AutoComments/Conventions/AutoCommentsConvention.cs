@@ -15,19 +15,55 @@ namespace Toolkits.AutoComments.Conventions
         {
             _commentsSetter = new EntityCommentsSetter(xmlFiles);
         }
-        
+
         public void ProcessModelFinalizing(IConventionModelBuilder modelBuilder,
             IConventionContext<IConventionModelBuilder> context)
         {
+            // Установка комментария на таблицу.
             foreach (var entityType in modelBuilder.Metadata.GetEntityTypes())
             {
-                if (!entityType.IsOwned() && entityType.GetViewName() == null && entityType.GetTableName() != null)
+                // Для owned типов (предполагается что у owned нет таблицы)
+                if (entityType.IsOwned())
                 {
-                    _commentsSetter.SetTableComment(entityType);
+                    continue;
                 }
+                
+                // Для вьюх.
+                if (entityType.GetViewName() != null)
+                {
+                    continue;
+                }
+                
+                // Для абстракных классов в наследовании TPC.
+                if (entityType.GetTableName() == null)
+                {
+                    continue;
+                }
+                
+                // Для наследников в TPH.
+                if (entityType.BaseType != null && entityType.BaseType.GetTableName() != null)
+                {
+                    continue;
+                }
+                
+                if (entityType.GetComment() != null)
+                {
+                    continue;
+                }
+                
+                _commentsSetter.SetTableComment(entityType);
+            }
 
+            // Установка комментариев на столбцы.
+            foreach (var entityType in modelBuilder.Metadata.GetEntityTypes())
+            {
                 foreach (var property in entityType.GetProperties())
                 {
+                    if (property.GetComment() != null)
+                    {
+                        continue;
+                    }
+                    
                     _commentsSetter.SetColumnComment(property);
 
                     if (property.HasEnumDescriptionComment())

@@ -18,12 +18,12 @@
         </member>
         <member name="T:EF.Toolkits.Tests.Models.Animal">
             <summary>
-            Сущность "Живтоное".
+            Сущность "Живтоное" 2.
             </summary>
         </member>
         <member name="P:EF.Toolkits.Tests.Models.Animal.Id">
             <summary>
-            Идентификатор.
+            Идентификатор 2.
             </summary>
         </member>
         <member name="P:EF.Toolkits.Tests.Models.Animal.Name">
@@ -71,14 +71,99 @@
             Комментарий для базого абстрактоного типа в наследовании TPC.
             </summary>
         </member>
+        <member name="P:EF.Toolkits.Tests.Models.BlogBase.Id">
+            <summary>
+            Идентификатор.
+            </summary>
+        </member>
         <member name="T:EF.Toolkits.Tests.Models.BlogA">
             <summary>
-            Наследник в TPC.
+            Наследник А в TPC.
+            </summary>
+        </member>
+        <member name="P:EF.Toolkits.Tests.Models.BlogA.Name">
+            <summary>
+            Имя А.
+            </summary>
+        </member>
+        <member name="T:EF.Toolkits.Tests.Models.BlogB">
+            <summary>
+            Наследник Б в TPC.
+            </summary>
+        </member>
+        <member name="P:EF.Toolkits.Tests.Models.BlogB.Name">
+            <summary>
+            Имя Б.
+            </summary>
+        </member>
+        <member name="T:EF.Toolkits.Tests.Models.Employee">
+            <summary>
+            Сотрудник.
+            </summary>
+        </member>
+        <member name="P:EF.Toolkits.Tests.Models.Employee.Id">
+            <summary>
+            Идентификатор.
+            </summary>
+        </member>
+        <member name="P:EF.Toolkits.Tests.Models.Employee.FirstName">
+            <summary>
+            Комментаий: Имя.
+            </summary>
+        </member>
+        <member name="P:EF.Toolkits.Tests.Models.Employee.Company">
+            <summary>
+            Компания.
+            </summary>
+        </member>
+        <member name="T:EF.Toolkits.Tests.Models.EmployeeCompany">
+            <summary>
+            Комменатрий для owned.
+            </summary>
+        </member>
+        <member name="P:EF.Toolkits.Tests.Models.EmployeeCompany.Name">
+            <summary>
+            Имя компании.
+            </summary>
+        </member>
+        <member name="P:EF.Toolkits.Tests.Models.EmployeeCompany.Position">
+            <summary>
+            Должность в компании.
             </summary>
         </member>
         <member name="T:EF.Toolkits.Tests.Models.EmployeeView">
             <summary>
             Тестовый комментарий для View.
+            </summary>
+        </member>
+        <member name="T:EF.Toolkits.Tests.Models.Post">
+            <summary>
+            Комментарий для базого типа в наследовании TPH.
+            </summary>
+        </member>
+        <member name="P:EF.Toolkits.Tests.Models.Post.Id">
+            <summary>
+            Идентификатор.
+            </summary>
+        </member>
+        <member name="T:EF.Toolkits.Tests.Models.PostA">
+            <summary>
+            Наследник А.
+            </summary>
+        </member>
+        <member name="P:EF.Toolkits.Tests.Models.PostA.TextA">
+            <summary>
+            Тексь А.
+            </summary>
+        </member>
+        <member name="T:EF.Toolkits.Tests.Models.PostB">
+            <summary>
+            Наследник Б.
+            </summary>
+        </member>
+        <member name="P:EF.Toolkits.Tests.Models.PostB.TextB">
+            <summary>
+            Тексь Б.
             </summary>
         </member>
     </members>
