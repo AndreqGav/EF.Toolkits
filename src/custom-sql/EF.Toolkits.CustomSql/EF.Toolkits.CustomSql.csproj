@@ -5,7 +5,7 @@
         <TargetFrameworks>net5.0;net6.0;net7.0;net8.0;net9.0</TargetFrameworks>
         <PackageId>EF.Toolkits.CustomSql</PackageId>
         <Title>CustomSql</Title>
-        <Version>1.0.17-alpha</Version>
+        <Version>1.0.18-alpha</Version>
         <Authors>AndreqGav</Authors>
         <Product>EF.Toolkits</Product>
         <Description>Managing custom SQL via EF migration engine.</Description>

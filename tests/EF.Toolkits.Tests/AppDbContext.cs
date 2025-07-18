@@ -43,11 +43,11 @@ namespace EF.Toolkits.Tests
 
                 entity.BeforeInsertOrUpdate("before_insert_or_update", triggersGenerator.GenerateTriggersScript());
             });
-            
+
             modelBuilder.Entity<EmployeeView>(entity =>
             {
                 entity.HasNoKey();
-                
+
                 entity.ToView("EmployeeView");
             });
 
@@ -81,6 +81,18 @@ namespace EF.Toolkits.Tests
                         AnimalType = AnimalType.Fish
                     },
                 });
+
+#if NET8_0_OR_GREATER
+
+            modelBuilder.Entity<BlogBase>(builder =>
+            {
+                builder.HasKey(entity => entity.Id);
+                builder.UseTpcMappingStrategy();
+            });
+
+            modelBuilder.Entity<BlogA>();
+
+#endif
         }
     }
 

@@ -21,7 +21,7 @@ namespace Toolkits.AutoComments.Conventions
         {
             foreach (var entityType in modelBuilder.Metadata.GetEntityTypes())
             {
-                if (!entityType.IsOwned() && entityType.BaseType == null && entityType.GetViewName() == null)
+                if (!entityType.IsOwned() && entityType.GetViewName() == null && entityType.GetTableName() != null)
                 {
                     _commentsSetter.SetTableComment(entityType);
                 }

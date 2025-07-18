@@ -4,6 +4,18 @@
         <name>EF.Toolkits.Tests</name>
     </assembly>
     <members>
+        <member name="T:EF.Toolkits.Tests.Migrations.Initial">
+            <inheritdoc />
+        </member>
+        <member name="M:EF.Toolkits.Tests.Migrations.Initial.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:EF.Toolkits.Tests.Migrations.Initial.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:EF.Toolkits.Tests.Migrations.Initial.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
         <member name="T:EF.Toolkits.Tests.Models.Animal">
             <summary>
             Сущность "Живтоное".
@@ -52,6 +64,16 @@
         <member name="F:EF.Toolkits.Tests.Models.AnimalType.Other">
             <summary>
             Другое.
+            </summary>
+        </member>
+        <member name="T:EF.Toolkits.Tests.Models.BlogBase">
+            <summary>
+            Комментарий для базого абстрактоного типа в наследовании TPC.
+            </summary>
+        </member>
+        <member name="T:EF.Toolkits.Tests.Models.BlogA">
+            <summary>
+            Наследник в TPC.
             </summary>
         </member>
         <member name="T:EF.Toolkits.Tests.Models.EmployeeView">
