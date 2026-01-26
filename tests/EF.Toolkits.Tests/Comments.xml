@@ -4,26 +4,14 @@
         <name>EF.Toolkits.Tests</name>
     </assembly>
     <members>
-        <member name="T:EF.Toolkits.Tests.Migrations.Initial">
-            <inheritdoc />
-        </member>
-        <member name="M:EF.Toolkits.Tests.Migrations.Initial.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:EF.Toolkits.Tests.Migrations.Initial.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:EF.Toolkits.Tests.Migrations.Initial.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
-            <inheritdoc />
-        </member>
         <member name="T:EF.Toolkits.Tests.Models.Animal">
             <summary>
-            Сущность "Живтоное" 2.
+            Сущность "Живтоное".
             </summary>
         </member>
         <member name="P:EF.Toolkits.Tests.Models.Animal.Id">
             <summary>
-            Идентификатор 2.
+            Идентификатор.
             </summary>
         </member>
         <member name="P:EF.Toolkits.Tests.Models.Animal.Name">
