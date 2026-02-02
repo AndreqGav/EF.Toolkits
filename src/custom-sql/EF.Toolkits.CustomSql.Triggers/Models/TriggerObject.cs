@@ -29,6 +29,11 @@ namespace Toolkits.Triggers.Models
         public TriggerTimeEnum Time { get; set; }
 
         /// <summary>
+        /// Тип триггера.
+        /// </summary>
+        public TriggerTypeEnum Type { get; set; }
+
+        /// <summary>
         /// Тело триггера в SQL.
         /// </summary>
         public string Body { get; set; }
@@ -48,12 +53,13 @@ namespace Toolkits.Triggers.Models
                    string.Equals(Table, other.Table) &&
                    Operation == other.Operation &&
                    Time == other.Time &&
+                   Type == other.Type &&
                    string.Equals(Body, other.Body);
         }
 
         public override int GetHashCode()
         {
-            return HashCode.Combine(Name, Table, Operation, Time, Body);
+            return HashCode.Combine(Name, Table, Operation, Time, Type, Body);
         }
     }
 }

@@ -31,8 +31,25 @@ namespace Toolkits.Triggers.Postgresql
 
             builder.AppendLine(string.Empty);
 
-            builder.AppendLine($"CREATE TRIGGER {name} {TimeToSql(trigger.Time)} {OperationToSql(trigger.Operation)}");
+            builder.Append(trigger.Type == TriggerTypeEnum.Regular ? "CREATE TRIGGER " : "CREATE CONSTRAINT TRIGGER ");
+            builder.AppendLine($"{name} {TimeToSql(trigger.Time)} {OperationToSql(trigger.Operation)}");
             builder.AppendLine($"ON {tableName}");
+
+            switch (trigger.Type)
+            {
+                case TriggerTypeEnum.ConstraintNotDeferrable:
+                    builder.AppendLine("NOT DEFERRABLE");
+                    break;
+
+                case TriggerTypeEnum.ConstraintDeferrableInitiallyImmediate:
+                    builder.AppendLine("DEFERRABLE INITIALLY IMMEDIATE");
+                    break;
+
+                case TriggerTypeEnum.ConstraintDeferrableInitiallyDeferred:
+                    builder.AppendLine("DEFERRABLE INITIALLY DEFERRED");
+                    break;
+            }
+
             builder.AppendLine($"FOR EACH ROW EXECUTE PROCEDURE {name}();");
 
             return builder.ToString();

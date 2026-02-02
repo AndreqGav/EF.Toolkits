@@ -24,10 +24,10 @@ namespace Toolkits.Triggers
         /// Триггер после вставки.
         /// </summary>
         public static EntityTypeBuilder<TEntity> AfterInsert<TEntity>(this EntityTypeBuilder<TEntity> entityTypeBuilder, string name,
-            string body)
+            string body, TriggerTypeEnum type = TriggerTypeEnum.Regular)
             where TEntity : class
         {
-            entityTypeBuilder.AddTriggerAnnotation(name, TriggerOperationEnum.Insert, TriggerTimeEnum.After, body);
+            entityTypeBuilder.AddTriggerAnnotation(name, TriggerOperationEnum.Insert, TriggerTimeEnum.After, body, type);
 
             return entityTypeBuilder;
         }
@@ -60,10 +60,10 @@ namespace Toolkits.Triggers
         /// Триггер после обновления.
         /// </summary>
         public static EntityTypeBuilder<TEntity> AfterUpdate<TEntity>(this EntityTypeBuilder<TEntity> entityTypeBuilder, string name,
-            string body)
+            string body, TriggerTypeEnum type = TriggerTypeEnum.Regular)
             where TEntity : class
         {
-            entityTypeBuilder.AddTriggerAnnotation(name, TriggerOperationEnum.Update, TriggerTimeEnum.After, body);
+            entityTypeBuilder.AddTriggerAnnotation(name, TriggerOperationEnum.Update, TriggerTimeEnum.After, body, type);
 
             return entityTypeBuilder;
         }
@@ -98,10 +98,10 @@ namespace Toolkits.Triggers
         /// </summary>
         public static EntityTypeBuilder<TEntity> AfterInsertOrUpdate<TEntity>(this EntityTypeBuilder<TEntity> entityTypeBuilder,
             string name,
-            string body)
+            string body, TriggerTypeEnum type = TriggerTypeEnum.Regular)
             where TEntity : class
         {
-            entityTypeBuilder.AddTriggerAnnotation(name, TriggerOperationEnum.InsertOrUpdate, TriggerTimeEnum.After, body);
+            entityTypeBuilder.AddTriggerAnnotation(name, TriggerOperationEnum.InsertOrUpdate, TriggerTimeEnum.After, body, type);
 
             return entityTypeBuilder;
         }
@@ -135,10 +135,10 @@ namespace Toolkits.Triggers
         /// Триггер после удаления.
         /// </summary>
         public static EntityTypeBuilder<TEntity> AfterDelete<TEntity>(this EntityTypeBuilder<TEntity> entityTypeBuilder, string name,
-            string body)
+            string body, TriggerTypeEnum type = TriggerTypeEnum.Regular)
             where TEntity : class
         {
-            entityTypeBuilder.AddTriggerAnnotation(name, TriggerOperationEnum.Delete, TriggerTimeEnum.After, body);
+            entityTypeBuilder.AddTriggerAnnotation(name, TriggerOperationEnum.Delete, TriggerTimeEnum.After, body, type);
 
             return entityTypeBuilder;
         }
@@ -157,7 +157,7 @@ namespace Toolkits.Triggers
 
         private static void AddTriggerAnnotation<TEntity>(this EntityTypeBuilder<TEntity> entityTypeBuilder,
             string name,
-            TriggerOperationEnum operation, TriggerTimeEnum time, string body)
+            TriggerOperationEnum operation, TriggerTimeEnum time, string body, TriggerTypeEnum type = TriggerTypeEnum.Regular)
             where TEntity : class
         {
             var table = entityTypeBuilder.Metadata.GetTableName();
@@ -168,7 +168,8 @@ namespace Toolkits.Triggers
                 Table = table,
                 Operation = operation,
                 Time = time,
-                Body = body
+                Body = body,
+                Type = type,
             };
 
             entityTypeBuilder.AddTriggerAnnotation(trigger);
