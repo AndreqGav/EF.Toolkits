@@ -15,15 +15,25 @@ namespace Toolkits.CustomSql.Abstractions
 
         private readonly ModelBuilder _modelBuilder;
 
+        private readonly bool _isRelational;
+
         protected CustomSqlGenerator(DbContext dbContext, ModelBuilder modelBuilder)
         {
             _modelBuilder = modelBuilder;
-            _sqlGenerationHelper = dbContext.GetInfrastructure().GetRequiredService<ISqlGenerationHelper>();
+
+            _isRelational = dbContext.Database.IsRelational();
+
+            if (_isRelational)
+            {
+                _sqlGenerationHelper = dbContext.GetInfrastructure().GetRequiredService<ISqlGenerationHelper>();
+            }
         }
 
         protected string GetTableName<TEntity>(bool includeSchema = true)
             where TEntity : class
         {
+            if (!_isRelational || _sqlGenerationHelper == null) return string.Empty;
+
             var metadata = _modelBuilder.Entity<TEntity>().Metadata;
 
             var tableName = metadata.GetTableName();
@@ -50,6 +60,8 @@ namespace Toolkits.CustomSql.Abstractions
         protected string GetColumnName<TEntity>(string propertyName)
             where TEntity : class
         {
+            if (!_isRelational || _sqlGenerationHelper == null) return string.Empty;
+
             var metadata = _modelBuilder.Entity<TEntity>().Metadata;
 
 #if NET6_0

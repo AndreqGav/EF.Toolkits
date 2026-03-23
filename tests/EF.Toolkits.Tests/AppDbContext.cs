@@ -28,7 +28,11 @@ namespace EF.Toolkits.Tests
             modelBuilder
                 .AddCustomSql("animals_view", "SELECT * FROM \"Animals\" a WHERE a.\"AnimalType\" = 1",
                     "DROP VIEW IF EXISTS animals_view");
-
+            
+            var view = new ViewSqlGenerator(this, modelBuilder);
+            
+            modelBuilder.AddCustomSql("animal_cats", view.Create(), view.Drop());
+            
             modelBuilder.Entity<Figure>(entity =>
             {
                 entity.BeforeInsert("set_square", "new.square = 0;");

@@ -12,6 +12,7 @@
 
     <ItemGroup Condition="'$(TargetFramework)' == 'net5.0'">
         <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.17"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="5.0.17" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="5.0.17"/>
         <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="5.0.10" />
 
@@ -28,6 +29,7 @@
 
     <ItemGroup Condition="'$(TargetFramework)' == 'net6.0'">
         <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.35"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="6.0.35" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="6.0.35"/>
         <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="6.0.29" />
 
@@ -44,6 +46,7 @@
 
     <ItemGroup Condition="'$(TargetFramework)' == 'net7.0'">
         <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.20"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="7.0.20" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="7.0.20"/>
         <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.18" />
 
@@ -60,6 +63,7 @@
 
     <ItemGroup Condition="'$(TargetFramework)' == 'net8.0'">
         <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.10"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="8.0.10" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="8.0.10"/>
         <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.8" />
 
@@ -76,6 +80,7 @@
 
     <ItemGroup Condition="'$(TargetFramework)' == 'net9.0'">
         <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.0"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="9.0.0" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="9.0.0"/>
         <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.1" />
 
@@ -92,6 +97,7 @@
 
     <ItemGroup Condition="'$(TargetFramework)' == 'net10.0'">
         <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.2"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="10.0.0" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="10.0.2"/>
         <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="10.0.0" />
 

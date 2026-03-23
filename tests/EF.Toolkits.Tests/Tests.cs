@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Infrastructure;
@@ -12,6 +13,18 @@ namespace EF.Toolkits.Tests
 {
     public class Tests
     {
+        [Fact]
+        public void NonSqlDatabase_Should_Ignore()
+        {
+            // Arrange
+            var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>()
+                .UseInMemoryDatabase(databaseName: Guid.NewGuid().ToString());
+            
+            using var context = new AppDbContext(optionsBuilder.Options);
+            
+            context.Database.EnsureCreated();
+        }
+
         [Fact]
         public void Migrations_Should_Include_CustomSql_Triggers_And_Comments()
         {
