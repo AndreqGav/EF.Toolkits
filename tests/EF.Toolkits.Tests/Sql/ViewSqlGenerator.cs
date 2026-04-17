@@ -13,7 +13,7 @@ namespace EF.Toolkits.Tests.Sql
         public string Create()
         {
             var animal = GetTableName<Animal>();
-            var id = GetColumnName<Animal>(e => e.AnimalType);
+            var id = GetColumnName<Animal>(e => e.Id);
             var type = GetColumnName<Animal>(e => e.AnimalType);
 
             return

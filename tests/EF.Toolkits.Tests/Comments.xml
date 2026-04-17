@@ -124,6 +124,46 @@
             Тестовый комментарий для View.
             </summary>
         </member>
+        <member name="T:EF.Toolkits.Tests.Models.Invoice">
+            <summary>
+            Счёт на оплату.
+            </summary>
+        </member>
+        <member name="P:EF.Toolkits.Tests.Models.Invoice.Id">
+            <summary>
+            Идентификатор счёта.
+            </summary>
+        </member>
+        <member name="P:EF.Toolkits.Tests.Models.Invoice.Amount">
+            <summary>
+            Сумма счёта в рублях.
+            </summary>
+        </member>
+        <member name="P:EF.Toolkits.Tests.Models.Invoice.IsPaid">
+            <summary>
+            Статус оплаты.
+            </summary>
+        </member>
+        <member name="T:EF.Toolkits.Tests.Models.Order">
+            <summary>
+            Заказ покупателя.
+            </summary>
+        </member>
+        <member name="P:EF.Toolkits.Tests.Models.Order.Id">
+            <summary>
+            Идентификатор заказа.
+            </summary>
+        </member>
+        <member name="P:EF.Toolkits.Tests.Models.Order.Number">
+            <summary>
+            Номер заказа.
+            </summary>
+        </member>
+        <member name="P:EF.Toolkits.Tests.Models.Order.TotalAmount">
+            <summary>
+            Итоговая сумма заказа в рублях.
+            </summary>
+        </member>
         <member name="T:EF.Toolkits.Tests.Models.Post">
             <summary>
             Комментарий для базого типа в наследовании TPH.
@@ -152,6 +192,128 @@
         <member name="P:EF.Toolkits.Tests.Models.PostB.TextB">
             <summary>
             Тексь Б.
+            </summary>
+        </member>
+        <member name="T:EF.Toolkits.Tests.Models.Product">
+            <summary>
+            Товар в каталоге магазина.
+            </summary>
+        </member>
+        <member name="P:EF.Toolkits.Tests.Models.Product.Id">
+            <summary>
+            Идентификатор товара.
+            </summary>
+        </member>
+        <member name="P:EF.Toolkits.Tests.Models.Product.Title">
+            <summary>
+            Наименование товара.
+            </summary>
+        </member>
+        <member name="P:EF.Toolkits.Tests.Models.Product.Price">
+            <summary>
+                   Цена товара в рублях.       
+            </summary>
+        </member>
+        <member name="P:EF.Toolkits.Tests.Models.Product.Status">
+            <summary>
+            Статус товара в каталоге.
+            </summary>
+        </member>
+        <member name="P:EF.Toolkits.Tests.Models.Product.Category">
+            <summary>
+            Категория товара.
+            </summary>
+        </member>
+        <member name="T:EF.Toolkits.Tests.Models.ProductStatus">
+            <summary>
+            Статус товара.
+            </summary>
+        </member>
+        <member name="F:EF.Toolkits.Tests.Models.ProductStatus.Active">
+            <summary>
+            Активный, доступен для заказа.
+            </summary>
+        </member>
+        <member name="F:EF.Toolkits.Tests.Models.ProductStatus.Inactive">
+            <summary>
+            Неактивный, скрыт из каталога.
+            </summary>
+        </member>
+        <member name="F:EF.Toolkits.Tests.Models.ProductStatus.Archived">
+            <summary>
+            В архиве, снят с продажи.
+            </summary>
+        </member>
+        <member name="T:EF.Toolkits.Tests.Models.ProductCategory">
+            <summary>
+            Категория товара.
+            </summary>
+        </member>
+        <member name="F:EF.Toolkits.Tests.Models.ProductCategory.Clothing">
+            <summary>
+            Одежда.
+            </summary>
+        </member>
+        <member name="F:EF.Toolkits.Tests.Models.ProductCategory.Books">
+            <summary>
+            Книги.
+            </summary>
+        </member>
+        <member name="F:EF.Toolkits.Tests.Models.ProductCategory.Toys">
+            <summary>
+            Игрушки.
+            </summary>
+        </member>
+        <member name="T:EF.Toolkits.Tests.Models.ProductCatalogView">
+            <summary>
+            Представление каталога товаров (без ключа).
+            </summary>
+        </member>
+        <member name="T:EF.Toolkits.Tests.Models.Warehouse">
+            <summary>
+            Склад хранения товаров.
+            </summary>
+        </member>
+        <member name="P:EF.Toolkits.Tests.Models.Warehouse.Id">
+            <summary>
+            Идентификатор склада.
+            </summary>
+        </member>
+        <member name="P:EF.Toolkits.Tests.Models.Warehouse.Address">
+            <summary>
+            Адрес склада.
+            </summary>
+        </member>
+        <member name="P:EF.Toolkits.Tests.Models.Warehouse.Capacity">
+            <summary>
+            Вместимость склада в единицах.
+            </summary>
+        </member>
+        <member name="T:EF.Toolkits.Tests.Model.AutoCommentsModelTests">
+            <summary>
+            Тесты проверяют, что конвенция автокомментариев корректно устанавливает
+            комментарии на таблицы и колонки на основе XML-документации.
+            Реальное подключение к БД не требуется — только построение модели.
+            </summary>
+        </member>
+        <member name="T:EF.Toolkits.Tests.Model.CustomSqlAnnotationTests">
+            <summary>
+            Тесты проверяют хранение произвольного SQL в аннотациях модели
+            и генерацию операций миграции через CustomSqlMigrationOperationModifier.
+            Реальное подключение к БД не требуется — только построение модели.
+            </summary>
+        </member>
+        <member name="T:EF.Toolkits.Tests.Model.TriggerModelTests">
+            <summary>
+            Тесты проверяют, что конвенция триггеров правильно преобразует
+            аннотации TriggerObject в SQL-аннотации CustomSql.
+            Реальное подключение к БД не требуется — только построение модели.
+            </summary>
+        </member>
+        <member name="T:EF.Toolkits.Tests.Unit.PostgreSqlTriggerSqlGeneratorTests.FakeSqlGenerationHelper">
+            <summary>
+            Тестовая заглушка ISqlGenerationHelper.
+            Экранирует идентификаторы двойными кавычками (PostgreSQL-стиль).
             </summary>
         </member>
     </members>
